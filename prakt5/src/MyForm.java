@@ -27,18 +27,25 @@ public class MyForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 firstTeamScore++;
+                result.setText(firstTeamScore + " : " + secondTeamScore);
             }
         });
         add2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 secondTeamScore++;
+                result.setText(firstTeamScore + " : " + secondTeamScore);
             }
         });
         showResult.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                result.setText(firstTeamScore + " : " + secondTeamScore);
+                if (firstTeamScore > secondTeamScore)
+                    result.setText("1ая команда победила");
+                else if (secondTeamScore > firstTeamScore)
+                    result.setText("2ая команда победила");
+                else
+                    result.setText("Ничья");
             }
         });
 
