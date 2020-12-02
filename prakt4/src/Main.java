@@ -1,19 +1,17 @@
-import Employees.*;
-
 public class Main {
     public static void main(String[] args) {
-        Company microsoft = new Company("microsoft", 150_000_000);
+        Company microsoft = new Company(15_000_000);
 
         for (int i = 0; i < 180; i++) {
-            microsoft.hire(new Operator("Test","Testovich","Operator",10_000));
-            if(i < 80)
-                microsoft.hire(new Manager("Tost", "Tostovich","Manger", 12000));
-            if(i < 10)
-                microsoft.hire(new TopManager("Kek", "Kekovich","Top manager", 12000, microsoft));
+            microsoft.hire(new Employee("Raz", "Dvazovich", new Operator()));
+            if (i < 80)
+                microsoft.hire(new Employee("Kek", "Kekovich", new Manager()));
+            if (i < 10)
+                microsoft.hire(new Employee("Lol", "Gr", new TopManager(microsoft)));
         }
-        microsoft.showEmployees();
-        microsoft.getTopSalaryStaff(15);
-        microsoft.getLowestSalaryStaff(30);
+
+        microsoft.getLowestSalaryStaff(15);
+        microsoft.getTopSalaryStaff(30);
 
         System.out.println("Уволены");
         microsoft.fire(135);
@@ -21,6 +19,5 @@ public class Main {
         microsoft.getTopSalaryStaff(15);
         microsoft.getLowestSalaryStaff(30);
     }
-
 
 }
