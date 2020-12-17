@@ -2,15 +2,11 @@ import java.util.ArrayList;
 
 public class Company {
     private ArrayList<Employee> employees = new ArrayList<>();
-    private double income;
+    private double income = 0;
 
-    public Company(double income) {
-        this.income = income;
+    public Company() {
     }
 
-    public double getIncome() {
-        return income;
-    }
 
     public void hire(Employee employee) {
         employees.add(employee);
@@ -24,6 +20,15 @@ public class Company {
         int size = employees.size();
         for (int i = size - 1; i >= size - quantity; i--)
             employees.remove(i);
+    }
+
+    public double countIncome() {
+        for(Employee employee: employees) {
+            if(employee.position.getJobTitle().equals("Manager"));
+            income += employee.position.getCompanyIncome();
+        }
+
+        return income;
     }
 
     public void getLowestSalaryStaff(int count) {

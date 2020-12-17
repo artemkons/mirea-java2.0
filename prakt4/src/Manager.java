@@ -14,4 +14,9 @@ public class Manager implements EmployeePosition {
     public double calcSalary(double baseSalary) {
         return companyIncome * 0.05 + baseSalary;
     }
+
+    @Override
+    public double getCompanyIncome() {
+        return companyIncome;
+    }
 }

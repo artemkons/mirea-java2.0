@@ -8,4 +8,9 @@ public class Operator implements EmployeePosition {
     public double calcSalary(double baseSalary) {
         return baseSalary;
     }
+
+    @Override
+    public double getCompanyIncome() {
+        return 0;
+    }
 }

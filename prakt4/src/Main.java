@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Company microsoft = new Company(15_000_000);
+        Company microsoft = new Company();
 
         for (int i = 0; i < 180; i++) {
             microsoft.hire(new Employee("Raz", "Dvazovich", new Operator()));
@@ -9,6 +9,7 @@ public class Main {
             if (i < 10)
                 microsoft.hire(new Employee("Lol", "Gr", new TopManager(microsoft)));
         }
+        System.out.println(microsoft.countIncome());
 
         microsoft.getLowestSalaryStaff(15);
         microsoft.getTopSalaryStaff(30);
