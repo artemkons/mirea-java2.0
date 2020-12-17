@@ -1,18 +1,36 @@
+import javax.print.DocFlavor;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FileLogic {
     private static String[] bytesPrefix = {" Bytes", " KBytes", " MBytes", " GBytes", " TBytes"};
 
-    public static void logging(String str) {
+    public static String logging() {
         try {
+            Scanner scanner = new Scanner(System.in);
+            String str = scanner.nextLine();
             FileOutputStream os = new FileOutputStream("log/log.txt", true);
             byte[] buffer = str.getBytes();
             os.write(buffer, 0, buffer.length);
             os.write('\n');
+            return str;
         } catch (IOException e) {
+            System.out.println("Ошибка");
+        }
+        return "";
+    }
+
+    public static void logging(String str) {
+        try {
+            System.out.println(str);
+            FileOutputStream os = new FileOutputStream("log/log.txt", true);
+            byte[] buffer = str.getBytes();
+            os.write(buffer, 0, buffer.length);
+            os.write('\n');
+        } catch (Exception e) {
             System.out.println("Ошибка");
         }
     }
@@ -42,7 +60,7 @@ public class FileLogic {
             }
             return size + bytesPrefix[i];
         } else {
-            System.out.println("Такой папки не существует");
+            logging("Такой папки не существует");
             return null;
         }
     }
@@ -96,7 +114,7 @@ public class FileLogic {
                 }
 
             } catch (Exception e) {
-                e.printStackTrace();
+                logging(e.toString());
             }
 
         }
